@@ -1,20 +1,20 @@
 deer.ppm
 2
-o.txt
+ohdeerPattern_rectangle.txt
 1 1
 1
 
 2
-o.txt
+ohdeerPattern_rectangle.txt
 425 536
 1
 
 2
-o.txt
+ohdeerPattern_rectangle.txt
 426 536
 
 2
-o.txt
+ohdeerPattern_rectangle.txt
 425 537
 
 4
