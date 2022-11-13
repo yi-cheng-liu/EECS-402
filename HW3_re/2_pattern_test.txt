@@ -1,0 +1,22 @@
+deer.ppm
+2
+o.txt
+1 1
+1
+
+2
+o.txt
+425 536
+1
+
+2
+o.txt
+426 536
+
+2
+o.txt
+425 537
+
+4
+2_pattern_test.ppm
+5
