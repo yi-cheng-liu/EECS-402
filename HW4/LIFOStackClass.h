@@ -1,3 +1,5 @@
+#include "LinkedNodeClass.h"
+
 class LIFOStackClass {
 private: 
     LinkedNodeClass *head; //Points to the first node in a stack, or NULL 
