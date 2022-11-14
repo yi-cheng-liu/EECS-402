@@ -1,5 +1,10 @@
 //The list node class will be the data type for individual nodes of 
 //a doubly-linked data structure. 
+
+#ifndef _LINKED_NODE_CLASS_H_
+#define _LINKED_NODE_CLASS_H_
+
+
 class LinkedNodeClass {  
 private:  
     LinkedNodeClass *prevNode; //Will point to the node that comes before  
@@ -43,3 +48,5 @@ public:
     //to "this" node, but "this" node itself remains unchanged.  
     void setBeforeAndAfterPointers();  
 }; 
+
+#endif

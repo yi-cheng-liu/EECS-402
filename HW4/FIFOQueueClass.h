@@ -1,3 +1,8 @@
+#ifndef _FIFO_QUEUE_CLASS_H_
+#define _FIFO_QUEUE_CLASS_H_
+
+#include "LinkedNodeClass.h"
+
 class FIFOQueueClass {
 private: 
     LinkedNodeClass *head; //Points to the first node in a queue, or NULL 
@@ -12,7 +17,7 @@ public:
     //Destructor.  Responsible for making sure any dynamic memory 
     //associated with an object is freed up when the object is 
     //being destroyed. 
-    ~FIFOQueueClass(); 
+    // ~FIFOQueueClass(); 
  
     //Inserts the value provided (newItem) into the queue. 
     void enqueue(const int &newItem); 
@@ -23,7 +28,7 @@ public:
     //queue is not empty, the function returns true and outItem 
     //becomes a copy of the next item in the queue, which is  
     //removed from the data structure. 
-    bool dequeue(int &outItem); 
+    // bool dequeue(int &outItem); 
   
     //Prints out the contents of the queue.  All printing is done 
     //on one line, using a single space to separate values, and a 
@@ -35,5 +40,7 @@ public:
   
     //Clears the queue to an empty state without resulting in any 
     //memory leaks. 
-    void clear(); 
+    // void clear(); 
 }; 
+
+#endif

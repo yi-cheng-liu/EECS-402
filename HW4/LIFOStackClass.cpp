@@ -11,12 +11,15 @@ LIFOStackClass::LIFOStackClass() {
 // }
  
 void LIFOStackClass::push(const int &newItem) {
-    if(head == tail) {
+    if(head == 0) {
         LinkedNodeClass* headNode = new LinkedNodeClass(0, newItem, 0);
+        head = headNode;
+        tail = headNode;
     }
     else {
-        LinkedNodeClass* newNode = new LinkedNodeClass(tail, newItem,0);
-        tail = newNode;
+        LinkedNodeClass* newNode = new LinkedNodeClass(0, newItem, head);
+        newNode->setBeforeAndAfterPointers();
+        head = newNode;
     }
     
 }
@@ -36,16 +39,34 @@ void LIFOStackClass::push(const int &newItem) {
 //single newline character is printed at the end. 
 void LIFOStackClass::print() const {
     LinkedNodeClass *curPtr = head;
+    std::cout << "print out the stack from top to bottom" << std::endl;
     while(curPtr != 0) {
-        std::cout << curPtr->getValue() << "->";
+        std::cout << "[" << curPtr->getPrev() << ", ";
+        std::cout << curPtr->getValue() << ", ";
+        std::cout << curPtr->getNext() << "]";
+        if(curPtr->getNext() != 0){
+            std::cout << "->";
+        }
         curPtr = curPtr->getNext();
     }
+    
 }
 
 //Returns the number of nodes contained in the stack. 
-// int LIFOStackClass::getNumElems() const {
-
-// }
+int LIFOStackClass::getNumElems() const {
+    LinkedNodeClass* countNode = head;
+    int count = 0;
+    if(head == 0){
+        return 0;
+    }
+    else{
+        while(countNode != 0){
+            count++;
+            countNode = countNode->getNext();
+        }
+    }
+    return count;
+}
 
 //Clears the stack to an empty state without resulting in any 
 //memory leaks. 
