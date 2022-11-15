@@ -23,9 +23,27 @@ void FIFOQueueClass::enqueue(const int &newItem) {
         tail = newNode;
     }
 } 
-// bool FIFOQueueClass::dequeue(int &outItem) {
-
-// }
+bool FIFOQueueClass::dequeue(int &outItem) {
+    if(head == 0) {
+        return false;
+    }
+    else {
+        LinkedNodeClass *nodeToDelete = head;
+        if(head == tail){
+            nodeToDelete->setBeforeAndAfterPointers();
+            return true;
+        }
+        else{
+            if(head->getValue() == outItem) {
+                head = nodeToDelete->getNext();
+                head->setPreviousPointerToNull();
+                delete nodeToDelete;
+                return true;
+            }
+        }
+    }
+    return false;
+}
 // print out the queue from first to last
 void FIFOQueueClass::print() const {
     LinkedNodeClass *curPtr = head;

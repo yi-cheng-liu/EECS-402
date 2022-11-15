@@ -44,6 +44,10 @@ int main()
   queue.enqueue(2);
   queue.print();
   std::cout << std::endl;
+  int REMOVE_NUM = 12;
+  std::cout << queue.dequeue(REMOVE_NUM) << std::endl;
+  queue.print();
+  std::cout << std::endl;
   std::cout << "Number of elements: " << queue.getNumElems() << std::endl;
  
   LinkedNodeClass L1(0, 12, 0);

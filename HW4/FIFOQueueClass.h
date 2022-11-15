@@ -28,7 +28,7 @@ public:
     //queue is not empty, the function returns true and outItem 
     //becomes a copy of the next item in the queue, which is  
     //removed from the data structure. 
-    // bool dequeue(int &outItem); 
+    bool dequeue(int &outItem); 
   
     //Prints out the contents of the queue.  All printing is done 
     //on one line, using a single space to separate values, and a 
