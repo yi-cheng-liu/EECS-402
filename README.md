@@ -7,3 +7,16 @@ Project 1 - Accure Interest calculator
 Project 2 - Pixel and image representation
 
 project 3 - Image modification (bounding boxes, pattern, and images)
+The project requires a lot of bound checking. 
+
+test.sh - test all the boundings for the image
+  # test 1 - check the three methods of rectangle
+             1. upper left and lower right
+                should have 6 ERROR! while checking the bounding and valid  
+             2. upper left
+                should have 6 ERROR!
+             3. center 
+                should have 4 ERROR!
+  # test 2 - pattern check
+  # test 3 - image check
+  
