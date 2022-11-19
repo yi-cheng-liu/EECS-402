@@ -145,28 +145,28 @@ void ColorImageClass::addRectangle(const RectangleClass &rect, bool isFilled){
     //1 - not fill the rectangle
     if(isFilled == false) {
         //Set the color of left and right col
-        for(int i = (rectStartRow - 1); i < rectEndRow; i++) {
+        for(int i = (rectStartRow); i <= rectEndRow; i++) {
             //left col
-            rectIndex = i * width + (rectStartCol - 1);
+            rectIndex = i * width + (rectStartCol);
             pixel1DArray[rectIndex].setTo(rect.getColor());
             //right col
-            rectIndex = i * width + (rectEndCol - 1);
+            rectIndex = i * width + (rectEndCol);
             pixel1DArray[rectIndex].setTo(rect.getColor());
         }
         //Set the color of upper and lower row
-        for(int j = (rectStartCol - 1); j < rectEndCol; j++) {
+        for(int j = (rectStartCol); j <= rectEndCol; j++) {
             //upper row
-            rectIndex = (rectStartRow - 1) * width + j;
+            rectIndex = (rectStartRow) * width + j;
             pixel1DArray[rectIndex].setTo(rect.getColor());
             //lower row
-            rectIndex = (rectEndRow - 1) * width + j;
+            rectIndex = (rectEndRow) * width + j;
             pixel1DArray[rectIndex].setTo(rect.getColor());
         }
     }
     //2 - fill the rectangle, two for loops
     if(isFilled == true) {
-        for(int i = (rectStartRow - 1); i < rectEndRow; i++) {
-            for(int j = (rectStartCol - 1); j < rectEndCol; j++) {
+        for(int i = (rectStartRow); i <= rectEndRow; i++) {
+            for(int j = (rectStartCol); j <= rectEndCol; j++) {
                 rectIndex = i * width + j;
                 pixel1DArray[rectIndex].setTo(rect.getColor());
             }
@@ -181,8 +181,8 @@ void ColorImageClass::addPattern(const PatternClass &ptn, int pRowStart,
         for (int j = 0; j < ptn.getWidth(); j++) {
             //determine the pattern value
             if(ptn.getPixelValue(i, j)){
-                int patternIndex = (pRowStart + i - 1) * width + 
-                                   (pColStart + j - 1);
+                int patternIndex = (pRowStart + i) * width + 
+                                   (pColStart + j);
                 pixel1DArray[patternIndex].setTo(ptn.getPatternColor());
             }
         }
@@ -195,8 +195,8 @@ void ColorImageClass::addImage(const ColorImageClass &img, int iRowStart,
     for (int i = 0; i < img.height; i++) {
         for (int j = 0; j < img.width; j++) {
             //Replace the pixel color if different from transparency color
-            int iRow = iRowStart + i - 1;
-            int iCol = iColStart + j - 1;
+            int iRow = iRowStart + i;
+            int iCol = iColStart + j;
             int imageIndex = iRow * width + iCol;            
             if(!img.getPixelValue(i, j).checkSameColor(transparency)) {    
                 pixel1DArray[imageIndex].setTo(img.getPixelValue(i, j));

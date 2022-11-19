@@ -10,11 +10,11 @@ cat 1_rectangle_1_test.txt | ./project3.exe
 cat 1_rectangle_2_test.txt | ./project3.exe
 cat 1_rectangle_3_test.txt | ./project3.exe
 
-# # test out the pattern image
+# test out the pattern image
 rm -f 2_pattern_test.ppm
 cat 2_pattern_test.txt | ./project3.exe
 
-# # test out the image
+# test out the image
 rm -f 3_image_test.ppm
 cat 3_image_test.txt | ./project3.exe
 

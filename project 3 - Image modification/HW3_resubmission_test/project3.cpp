@@ -101,8 +101,8 @@ int main(){
                         }
                         //Error checking
                         //lowRight row/col is larger than image
-                        else if(lowRightCol > uploadWidth || 
-                                lowRightRow > uploadHeight ){
+                        else if(lowRightCol >= uploadWidth || 
+                                lowRightRow >= uploadHeight ){
                             cout << "ERROR! The rectangle ";
                             cout << "will be out of bound!" << endl;
                         }
@@ -135,7 +135,7 @@ int main(){
                             cout << "for number of rows!" << endl;
                         }
                         //Error checking - lowRight row is larger than image
-                        else if(upLeftRow + row - 1 > uploadHeight){
+                        else if(upLeftRow + row > uploadHeight){
                             cout << "ERROR! The rectangle height ";
                             cout << "will be out of bound!" << endl;
                         }
@@ -148,7 +148,7 @@ int main(){
                             }
                             //Error checking
                             //lowRight col is larger than image
-                            else if(upLeftCol + col - 1 > uploadWidth){
+                            else if(upLeftCol + col > uploadWidth){
                                 cout << "ERROR! The rectangle width ";
                                 cout << "will be out of bound!" << endl;
                             }
@@ -190,7 +190,7 @@ int main(){
                         //Error checking
                         //left/right row is smaller/larger than image
                         else if(centerRow - row < IMAGE_MIN || 
-                                centerRow + row > uploadHeight){
+                                centerRow + row >= uploadHeight){
                             cout << "ERROR! The rectangle height ";
                             cout << "will be out of bound!" << endl;
                         }
@@ -204,7 +204,7 @@ int main(){
                             //Error checking
                             //left/right col is smaller/larger than image
                             else if(centerCol - col < IMAGE_MIN || 
-                                    centerCol + col > uploadWidth){
+                                    centerCol + col >= uploadWidth){
                                 cout << "ERROR! The rectangle width ";
                                 cout << "will be out of bound!" << endl;
                             }
@@ -320,8 +320,8 @@ int main(){
                         cout << "Error! Enter valid row and column! " << endl;
                     }
                     //RESUBMISSION CODE
-                    else if(insertWidth + patternStartCol - 1 > uploadWidth || 
-                            insertHeight + patternStartRow - 1 > uploadHeight){
+                    else if(insertWidth + patternStartCol -1 >= uploadWidth || 
+                            insertHeight + patternStartRow -1 >= uploadHeight){
                         cout << "ERROR! The insert pattern will be ";
                         cout << "out of bound!" << endl;
                     }
@@ -396,8 +396,8 @@ int main(){
                        imgStartCol < IMAGE_MIN){
                         cout << "Error! Enter valid row and column! " << endl;
                     }
-                    else if(insertWidth + imgStartCol - 1 > uploadWidth || 
-                            insertHeight + imgStartRow - 1 > uploadHeight){
+                    else if(insertWidth + imgStartCol - 1 >= uploadWidth || 
+                            insertHeight + imgStartRow - 1 >= uploadHeight){
                         cout << "ERROR! The insert image will be ";
                         cout << "out of bound!" << endl;
                     }

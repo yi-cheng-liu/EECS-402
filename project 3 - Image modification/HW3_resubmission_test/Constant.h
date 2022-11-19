@@ -42,7 +42,7 @@ const int ALL_WHITE = 5;
 const int DEFAULT_ROW_COLUMN_VALUE = 0;
 
 //The minimum pixel index
-const int IMAGE_MIN = 1;
+const int IMAGE_MIN = 0;
 
 //RESUBMISSION CODE
 //ignore length

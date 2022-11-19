@@ -1,21 +1,21 @@
 deer.ppm
 2
 ohdeerPattern_rectangle.txt
-1 1
+0 0
 1
 
 2
 ohdeerPattern_rectangle.txt
-425 536
+424 535
 1
 
 2
 ohdeerPattern_rectangle.txt
-426 536
+425 535
 
 2
 ohdeerPattern_rectangle.txt
-425 537
+424 536
 
 4
 2_pattern_test.ppm

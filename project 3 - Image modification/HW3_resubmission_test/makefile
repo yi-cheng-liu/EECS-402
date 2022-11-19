@@ -44,6 +44,6 @@ RowColumnClass.o: RowColumnClass.cpp
 MainMenu.o: MainMenu.cpp
 	g++ -c MainMenu.cpp -o MainMenu.o
 
-
 clean:
 	rm -rf project3.o RectangleClass.o PatternClass.o ColorImageClass.o ColorClass.o RowColumnClass.o MainMenu.o project3.exe
+	rm -rf new1.ppm new2.ppm new3.ppm new4.ppm new5.ppm
