@@ -26,16 +26,16 @@ void LinkedNodeClass::setPreviousPointerToNull() {
     prevNode = 0;
 }
 void LinkedNodeClass::setBeforeAndAfterPointers() {
-    if(this->prevNode == 0 && this->nextNode == 0){
-        delete this;
-    }
-    else if(this->nextNode == 0){
+    //set the tail
+    if(this->nextNode == 0) {
         this->prevNode->nextNode = this;
     }
-    else if(this->prevNode == 0){
+    //set the head
+    else if(this->prevNode == 0) {
         this->nextNode->prevNode = this;
     }
-    else{
+    //set the middle
+    else {
         this->prevNode->nextNode = this;
         this->nextNode->prevNode = this;
     }

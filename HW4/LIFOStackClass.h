@@ -18,7 +18,7 @@ public:
     //Destructor.  Responsible for making sure any dynamic memory 
     //associated with an object is freed up when the object is 
     //being destroyed. 
-    // ~LIFOStackClass(); 
+    ~LIFOStackClass(); 
  
     //Inserts the value provided (newItem) into the stack. 
     void push(const int &newItem); 
@@ -29,7 +29,7 @@ public:
     //stack is not empty, the function returns true and outItem 
     //becomes a copy of the next item in the stack, which is  
     //removed from the data structure. 
-    // bool pop(int &outItem); 
+    bool pop(int &outItem); 
   
     //Prints out the contents of the stack.  All printing is done 
     //on one line, using a single space to separate values, and a 
@@ -41,7 +41,7 @@ public:
  
     //Clears the stack to an empty state without resulting in any 
     //memory leaks. 
-    // void clear(); 
+    void clear(); 
 };
 
 #endif

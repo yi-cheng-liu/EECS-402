@@ -6,9 +6,10 @@ FIFOQueueClass::FIFOQueueClass() {
     head = 0;
     tail = 0;
 }
-// FIFOQueueClass::~FIFOQueueClass() {
+FIFOQueueClass::~FIFOQueueClass() {
+    clear();
+}
 
-// }
 void FIFOQueueClass::enqueue(const int &newItem) {
     // The queue is empty
     if(head == 0) {
@@ -27,23 +28,21 @@ bool FIFOQueueClass::dequeue(int &outItem) {
     if(head == 0) {
         return false;
     }
-    else {
-        LinkedNodeClass *nodeToDelete = head;
-        if(head == tail){
-            nodeToDelete->setBeforeAndAfterPointers();
-            return true;
-        }
-        else{
-            if(head->getValue() == outItem) {
-                head = nodeToDelete->getNext();
-                head->setPreviousPointerToNull();
-                delete nodeToDelete;
-                return true;
-            }
-        }
+    else if(head == tail) {
+        delete head;
+        head = tail = 0;
+        return true;
     }
-    return false;
+    else {
+        LinkedNodeClass* nodeToDequeue = head;
+        outItem = head->getValue();
+        head = head->getNext();
+        delete nodeToDequeue;
+        head->setPreviousPointerToNull();
+        return true;
+    }
 }
+
 // print out the queue from first to last
 void FIFOQueueClass::print() const {
     LinkedNodeClass *curPtr = head;
@@ -57,6 +56,7 @@ void FIFOQueueClass::print() const {
         }
         curPtr = curPtr->getNext();
     }
+    std::cout << std::endl;
 }
 
 // get the number of elements
@@ -73,4 +73,20 @@ int FIFOQueueClass::getNumElems() const {
         }
     }
     return count;
+}
+
+void FIFOQueueClass::clear() {
+    LinkedNodeClass* deleteNode = head;
+    //only one node to delete
+    if(head == tail) {
+        delete deleteNode;
+    }
+    else {
+        while(deleteNode->getNext() != 0) {
+            deleteNode = deleteNode->getNext();
+            delete deleteNode->getPrev();
+        }
+        delete deleteNode;
+        head = tail = 0;
+    }
 }

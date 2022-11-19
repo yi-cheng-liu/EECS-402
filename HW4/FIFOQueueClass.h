@@ -17,7 +17,7 @@ public:
     //Destructor.  Responsible for making sure any dynamic memory 
     //associated with an object is freed up when the object is 
     //being destroyed. 
-    // ~FIFOQueueClass(); 
+    ~FIFOQueueClass(); 
  
     //Inserts the value provided (newItem) into the queue. 
     void enqueue(const int &newItem); 
@@ -40,7 +40,7 @@ public:
   
     //Clears the queue to an empty state without resulting in any 
     //memory leaks. 
-    // void clear(); 
+    void clear(); 
 }; 
 
 #endif
