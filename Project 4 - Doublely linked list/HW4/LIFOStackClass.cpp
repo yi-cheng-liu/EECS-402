@@ -2,14 +2,18 @@
 #include "LIFOStackClass.h"
 #include "LinkedNodeClass.h"
 
+//constructor
 LIFOStackClass::LIFOStackClass() {
     head = 0;
     tail = 0;
 }
+
+//destructor
 LIFOStackClass::~LIFOStackClass() {
     clear();
 }
- 
+
+//push nodes to stack
 void LIFOStackClass::push(const int &newItem) {
     // Add the first node
     if(head == 0) {
@@ -24,17 +28,16 @@ void LIFOStackClass::push(const int &newItem) {
         tail = newNode;
     }
 }
-//Attempts to take the next item out of the stack.  If the 
-//stack is empty, the function returns false and the state 
-//of the reference parameter (outItem) is undefined.  If the 
-//stack is not empty, the function returns true and outItem 
-//becomes a copy of the next item in the stack, which is  
-//removed from the data structure. 
+
+//pops the last node of the stack and store the poped node value
 bool LIFOStackClass::pop(int &outItem) {
+    //The stack is empty
     if(head == 0) {
         return false;
     }
+    //Only one node
     else if(head == tail) {
+        outItem = head->getValue();
         delete head;
         head = tail = 0;
         return true;
@@ -49,25 +52,21 @@ bool LIFOStackClass::pop(int &outItem) {
     }
 }
 
-//Prints out the contents of the stack.  All printing is done 
-//on one line, using a single space to separate values, and a 
-//single newline character is printed at the end. 
+//print out the stack from bottom to top
 void LIFOStackClass::print() const {
     LinkedNodeClass *curPtr = head;
-    std::cout << "print out the stack from top to bottom" << std::endl;
     while(curPtr != 0) {
-        std::cout << "[" << curPtr->getPrev() << ", ";
-        std::cout << curPtr->getValue() << ", ";
-        std::cout << curPtr->getNext() << "]";
+        std::cout << curPtr->getValue();
+        //the last node don't have space
         if(curPtr->getNext() != 0){
-            std::cout << "->";
+            std::cout << " ";
         }
         curPtr = curPtr->getNext();
     }
     std::cout << std::endl;
 }
 
-//Returns the number of nodes contained in the stack. 
+//get the number of elements
 int LIFOStackClass::getNumElems() const {
     LinkedNodeClass* countNode = head;
     int count = 0;
@@ -83,14 +82,14 @@ int LIFOStackClass::getNumElems() const {
     return count;
 }
 
-//Clears the stack to an empty state without resulting in any 
-//memory leaks. 
+//clear the stack to prevent memory leak
 void LIFOStackClass::clear() {
     LinkedNodeClass* deleteNode = head;
     //only one node to delete
     if(head == tail) {
         delete deleteNode;
     }
+    //at least one node
     else {
         while(deleteNode->getNext() != 0) {
             deleteNode = deleteNode->getNext();

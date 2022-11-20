@@ -2,14 +2,18 @@
 #include "FIFOQueueClass.h"
 #include "LinkedNodeClass.h"
 
+//constructor
 FIFOQueueClass::FIFOQueueClass() {
     head = 0;
     tail = 0;
 }
+
+//destructor
 FIFOQueueClass::~FIFOQueueClass() {
     clear();
 }
 
+//enqueue nodes to queue
 void FIFOQueueClass::enqueue(const int &newItem) {
     // The queue is empty
     if(head == 0) {
@@ -24,11 +28,16 @@ void FIFOQueueClass::enqueue(const int &newItem) {
         tail = newNode;
     }
 } 
+
+//dequeue the first node of the queue and store the dequeue node value
 bool FIFOQueueClass::dequeue(int &outItem) {
+    //The queue is empty
     if(head == 0) {
         return false;
     }
+    //Only one node 
     else if(head == tail) {
+        outItem = head->getValue();
         delete head;
         head = tail = 0;
         return true;
@@ -43,23 +52,20 @@ bool FIFOQueueClass::dequeue(int &outItem) {
     }
 }
 
-// print out the queue from first to last
+//print out the queue from first to last
 void FIFOQueueClass::print() const {
     LinkedNodeClass *curPtr = head;
-    std::cout << "print out the queue from first to last" << std::endl;
     while(curPtr != 0) {
-        std::cout << "[" << curPtr->getPrev() << ", ";
-        std::cout << curPtr->getValue() << ", ";
-        std::cout << curPtr->getNext() << "]";
+        std::cout << curPtr->getValue();
         if(curPtr->getNext() != 0){
-            std::cout << "->";
+            std::cout << " ";
         }
         curPtr = curPtr->getNext();
     }
     std::cout << std::endl;
 }
 
-// get the number of elements
+//get the number of elements
 int FIFOQueueClass::getNumElems() const {
     LinkedNodeClass* countNode = head;
     int count = 0;
@@ -75,6 +81,7 @@ int FIFOQueueClass::getNumElems() const {
     return count;
 }
 
+//clear the queue to prevent memory leak
 void FIFOQueueClass::clear() {
     LinkedNodeClass* deleteNode = head;
     //only one node to delete

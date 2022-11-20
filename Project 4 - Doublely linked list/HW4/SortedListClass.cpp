@@ -5,25 +5,21 @@
 #define INT_MAX 2147483647 
 #define INT_MIN (-INT_MAX - 1)  
 
-// Default Constructor
+//constructor
 SortedListClass::SortedListClass() {
     head = 0; 
     tail = 0;
 } 
 // Copy Constructor
-// SortedListClass::SortedListClass(const SortedListClass &rhs) {
+SortedListClass::SortedListClass(const SortedListClass &rhs) {
+} 
 
-// } 
-
-//Destructor.  Responsible for making sure any dynamic memory 
-//associated with an object is freed up when the object is 
-//being destroyed. 
+//destructor
 SortedListClass::~SortedListClass() {
     clear();
 } 
 
-//Clears the list to an empty state without resulting in any 
-//memory leaks. 
+//clear the sorted list to prevent memory leak
 void SortedListClass::clear() {
     LinkedNodeClass* deleteNode = head;
     //only one node to delete
@@ -40,10 +36,10 @@ void SortedListClass::clear() {
     }
 }
 
+//insert a new node and put into the sorted order
 void SortedListClass::insertValue(const int &valToInsert) {
     // empty doublely-linked list
     if(head == 0) {
-        //create a new node 
         LinkedNodeClass* insertNode = new LinkedNodeClass(0, valToInsert, 0);
         head = insertNode;
         tail = insertNode;
@@ -79,7 +75,9 @@ void SortedListClass::printForward() const {
     // std::cout << "Forward List Contents Follow:" << std::endl;
     LinkedNodeClass* printPtr = head;
     while(printPtr != 0){
-        std::cout << printPtr->getValue();
+        std::cout << "[" << printPtr->getPrev() << ", ";
+        std::cout << printPtr->getValue() << ", ";
+        std::cout << printPtr->getNext() << "]";
         if(printPtr != tail) {
             //change to indent two spaces and one list element per line
             std::cout << "->"; 
@@ -119,21 +117,19 @@ bool SortedListClass::removeFront(int &theVal) {
     if(head == 0) {
         return false;
     }
+    //only one node to delete
+    else if(head == tail) {
+        theVal = head->getValue();
+        delete head;
+        head = tail = 0;
+        return true;
+    }
     else {
-        //only one node to delete
-        if(head == tail) {
-            theVal = head->getValue();
-            delete head;
-            head = tail = 0;
-            return true;
-        }
-        else {
-            theVal = head->getValue();
-            head = head->getNext();
-            delete head->getPrev();
-            head->setPreviousPointerToNull();
-            return true;
-        }
+        theVal = head->getValue();
+        head = head->getNext();
+        delete head->getPrev();
+        head->setPreviousPointerToNull();
+        return true;
     }
 } 
 
@@ -145,9 +141,11 @@ bool SortedListClass::removeFront(int &theVal) {
 //removed, true is returned, and the reference parameter will 
 //be set to the item that was removed. 
 bool SortedListClass::removeLast(int &theVal) {
+    //the list is empty
     if(head == 0) {
         return false;
     }
+    //only one node to delete
     else if(head == tail) {
         this->removeFront(theVal);
     }
@@ -178,11 +176,10 @@ int SortedListClass::getNumElems() const {
 //a copy of the value at that location. 
 bool SortedListClass::getElemAtIndex(const int index, int &outVal) const {
     if(index < 0) {
-        std::cout << "index lower than 0" << std::endl;
         return false;
     }
+    //the index is out of bound
     else if(index >= getNumElems()) {
-        std::cout << "index exceeded the list" << std::endl;
         return false;
     }
     else {
