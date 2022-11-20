@@ -17,6 +17,6 @@ test.sh - test all the boundings for the image
                 should have 6 ERROR!
              3. center 
                 should have 4 ERROR!
-  # test 2 - pattern check
-  # test 3 - image check
+  ## test 2 - pattern check
+  ### test 3 - image check
   
