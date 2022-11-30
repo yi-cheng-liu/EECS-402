@@ -37,10 +37,9 @@ int main(int argc, char *argv[]) {
       cout << "Cannot run simulation as it is not setup properly!" << endl;
       success = false;
     }
-  }
+    }
 
-  if (success)
-  {
+  if (success) {
     //Schedule the initial events that will "seed" the event-driven simulation
     cout << endl;
     cout << "Schedule simulation seed events" << endl;
