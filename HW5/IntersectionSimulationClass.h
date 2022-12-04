@@ -17,7 +17,7 @@
 //         that is managed via a traffic light.
 class IntersectionSimulationClass
 {
-  private:
+private:
     //Overall state attributes:
     bool isSetupProperly; //Indicates whether this simulation object
                           //is set up properly and is expected to be
@@ -85,96 +85,79 @@ class IntersectionSimulationClass
     int numTotalAdvancedWest;
     int numTotalAdvancedNorth;
     int numTotalAdvancedSouth;
-  public:
+public:
     //Explicit default ctor - sets the state of the sim to be NOT yet
     //setup properly.
-    IntersectionSimulationClass()
-    {
-      isSetupProperly = false;
-      //no need to initialize other params here, since the isSetupProperly
-      //boolean is used to indicate the other params can't be trusted yet.
+    IntersectionSimulationClass() {
+        isSetupProperly = false;
+        //no need to initialize other params here, since the isSetupProperly
+        //boolean is used to indicate the other params can't be trusted yet.
 
-      //Set up the initial state of the simulation itself..
-      currentTime = 0;
-      currentLight = LIGHT_GREEN_EW;
+        //Set up the initial state of the simulation itself..
+        currentTime = 0;
+        currentLight = LIGHT_GREEN_EW;
 
-      //Initialize stats
-      maxEastQueueLength = 0;
-      maxWestQueueLength = 0;
-      maxNorthQueueLength = 0;
-      maxSouthQueueLength = 0;
-      numTotalAdvancedEast = 0;
-      numTotalAdvancedWest = 0;
-      numTotalAdvancedNorth = 0;
-      numTotalAdvancedSouth = 0;
+        //Initialize stats
+        maxEastQueueLength = 0;
+        maxWestQueueLength = 0;
+        maxNorthQueueLength = 0;
+        maxSouthQueueLength = 0;
+        numTotalAdvancedEast = 0;
+        numTotalAdvancedWest = 0;
+        numTotalAdvancedNorth = 0;
+        numTotalAdvancedSouth = 0;
     }
 
     //Returns true if this simulation is ready to be executed, false otherwise.
-    bool getIsSetupProperly(
-         ) const
-    {
-      return isSetupProperly;
+    bool getIsSetupProperly() const {
+        return isSetupProperly;
     }
 
     //Reads a full set of simulation control parameters from a text file.
     //When successful, the simulation object will have its control
     //parameter attributes assigned and will be put in the "properly
     //setup" state, indicating the simualtion can be run in its current
-    //state.
-    void readParametersFromFile(
-         const std::string &paramFname //Name of text file to read params from
-         );
+    //state.              //Name of text file to read params from
+    void readParametersFromFile(const std::string &paramFname);
 
     //Print the simulation control parameters to the console
-    void printParameters(
-         ) const;
+    void printParameters() const;
 
     //Computes and returns the amount of time the light is red in the
     //east-west direction.
-    int getEastWestRedTime(
-         ) const
-    {
-      return northSouthGreenTime + northSouthYellowTime;
+    int getEastWestRedTime() const {
+        return northSouthGreenTime + northSouthYellowTime;
     }
 
     //Computes and returns the amount of time the light is red in the
     //north-south direction.
-    int getNorthSouthRedTime(
-         ) const
-    {
-      return eastWestGreenTime + eastWestYellowTime;
+    int getNorthSouthRedTime() const {
+        return eastWestGreenTime + eastWestYellowTime;
     }
 
     //Schedules the first car arrival in each direction to "seed" the
     //event driven simulation.
-    void scheduleSeedEvents(
-         )
-    {
-      scheduleArrival(EAST_DIRECTION);
-      scheduleArrival(WEST_DIRECTION);
-      scheduleArrival(NORTH_DIRECTION);
-      scheduleArrival(SOUTH_DIRECTION);
-      scheduleLightChange();
+    void scheduleSeedEvents() {
+        scheduleArrival(EAST_DIRECTION);
+        scheduleArrival(WEST_DIRECTION);
+        scheduleArrival(NORTH_DIRECTION);
+        scheduleArrival(SOUTH_DIRECTION);
+        scheduleLightChange();
     }
 
     //Schedules an arrival event in the specified direction.
-    void scheduleArrival(
-         const std::string &travelDir
-         );
+    void scheduleArrival(const std::string &travelDir);
 
     //Schedule a light change event to occur.
-    void scheduleLightChange(
-         );
+    void scheduleLightChange();
 
     //Handles the next event scheduled in the simulation's event list.
     //Returns true if the event was handled, or false if the next
     //event's scheduled time occurs after the specified simulation end time.
-    bool handleNextEvent(
-         );
+    bool handleNextEvent();
 
     //Prints the computed statistics from the simulation.
-    void printStatistics(
-         ) const;
+    void printStatistics() const;
 };
 
 #endif // _INTERSECTIONSIMULATIONCLASS_H_

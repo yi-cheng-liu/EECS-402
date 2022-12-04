@@ -3,11 +3,6 @@
 
 #include <string>
 
-//Programmer: Andrew Morgan
-//Date: November 2020
-//Purpose: A collection of constants used by an event-driven simulation of
-//cars flowing through an intersection managed by a traffic light.
-
 //Event type constants
 const int EVENT_UNKNOWN = -1;
 const int EVENT_ARRIVE_EAST = 0;
