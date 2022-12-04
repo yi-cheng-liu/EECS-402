@@ -2,40 +2,47 @@
 #include "LinkedNodeClass.h"
 
 //Constructor
-LinkedNodeClass::LinkedNodeClass(LinkedNodeClass *inPrev, const int &inVal, 
-                                 LinkedNodeClass *inNext){
+template <class T>
+LinkedNodeClass<T>::LinkedNodeClass(LinkedNodeClass<T> *inPrev, const T &inVal, 
+                                 LinkedNodeClass<T> *inNext){
     prevNode = inPrev;
     nextNode = inNext;
     nodeVal = inVal;
 }
 
-//get the node value
-int LinkedNodeClass::getValue() const {
+//Gets the node valuSe
+template <class T>
+T LinkedNodeClass<T>::getValue() const {
     return nodeVal;
 }
 
 //Returns the address of the node that follows this node.  
-LinkedNodeClass* LinkedNodeClass::getNext() const {
+template <class T>
+LinkedNodeClass<T>* LinkedNodeClass<T>::getNext() const {
     return nextNode;
 }
 
 //Returns the address of the node that comes before this node.  
-LinkedNodeClass* LinkedNodeClass::getPrev() const {
+template <class T>
+LinkedNodeClass<T>* LinkedNodeClass<T>::getPrev() const {
     return prevNode;
 }
 
 //Sets the object’s next node pointer to NULL. 
-void LinkedNodeClass::setNextPointerToNull() {
+template <class T>
+void LinkedNodeClass<T>::setNextPointerToNull() {
     nextNode = NULL;
 }
 
 //Sets the object's previous node pointer to NULL.  
-void LinkedNodeClass::setPreviousPointerToNull() {
+template <class T>
+void LinkedNodeClass<T>::setPreviousPointerToNull() {
     prevNode = NULL;
 }
 
 //Set the neighbor nodes with the correct pointer
-void LinkedNodeClass::setBeforeAndAfterPointers() {
+template <class T>
+void LinkedNodeClass<T>::setBeforeAndAfterPointers() {
     //set the tail
     if(this->nextNode == NULL) {
         this->prevNode->nextNode = this;

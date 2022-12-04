@@ -1,171 +1,72 @@
-#include <iostream>
 #include "SortedListClass.h"
 
-//constructor
-SortedListClass::SortedListClass() {
-    head = NULL; 
-    tail = NULL;
-} 
+int main() {
+    // SortedListClass<int> testSort1;
+    // testSort1.insertValue(12);
+    // testSort1.insertValue(10);
+    // testSort1.insertValue(9);
+    // testSort1.insertValue(56);
+    // testSort1.insertValue(4);
+    // testSort1.insertValue(278);
+    // testSort1.insertValue(5);
+    // testSort1.printForward();
+    // testSort1.printBackward();
+    // int out;
+    // std::cout << "Element numbers: " << testSort1.getNumElems() << std::endl;
+    // testSort1.getElemAtIndex(2, out);
+    // std::cout << "Element index 2: " << out << std::endl;
+    // testSort1.removeFront(out);
+    // std::cout << "removed front: " << out << std::endl;
+    // testSort1.printForward();
+    // testSort1.removeLast(out);
+    // std::cout << "removed last: "<< out << std::endl;
+    // testSort1.printForward();
+    // testSort1.clear();
+    // testSort1.printForward();
+    
+    SortedListClass<double> testSort2;
+    testSort2.insertValue(12.4);
+    testSort2.insertValue(4.6);
+    testSort2.insertValue(9.3);
+    testSort2.insertValue(56.3);
+    testSort2.insertValue(4.67);
+    testSort2.insertValue(278.66);
+    testSort2.insertValue(5.5);
+    testSort2.printForward();
+    testSort2.printBackward();
+    double out2;
+    std::cout << "Element numbers: " << testSort2.getNumElems() << std::endl;
+    testSort2.getElemAtIndex(2, out2);
+    std::cout << "Element index 2: " << out2 << std::endl;
+    testSort2.removeFront(out2);
+    std::cout << "removed front: " << out2 << std::endl;
+    testSort2.printForward();
+    testSort2.removeLast(out2);
+    std::cout << "removed last: "<< out2 << std::endl;
+    testSort2.printForward();
+    testSort2.clear();
+    testSort2.printForward();
 
-// Copy Constructor
-SortedListClass::SortedListClass(const SortedListClass &rhs) {
-    head = tail = NULL;
-    for (LinkedNodeClass* copy = rhs.head; copy; copy = copy->getNext()) {
-        this->insertValue(copy->getValue());
-    }
-} 
+    // SortedListClass<bool> testSort3;
+    // testSort3.insertValue(true);
+    // testSort3.insertValue(true);
+    // testSort3.insertValue(false);
+    // testSort3.insertValue(false);
+    // testSort3.insertValue(true);
+    // testSort3.insertValue(false);
+    // testSort3.insertValue(true);
+    // testSort3.printForward();
+    // testSort3.printBackward();
 
-//destructor
-SortedListClass::~SortedListClass() {
-    clear();
-} 
-
-//clear the sorted list to prevent memory leak
-void SortedListClass::clear() {
-    LinkedNodeClass* deleteNode = head;
-    //only one node to delete
-    if(head == tail) {
-        delete deleteNode;
-    }
-    else {
-        while(deleteNode->getNext() != NULL) {
-            deleteNode = deleteNode->getNext();
-            delete deleteNode->getPrev();
-        }
-        delete deleteNode;
-        head = tail = NULL;
-    }
-}
-
-//insert a new node and put into the sorted order
-void SortedListClass::insertValue(const int &valToInsert) {
-    // empty doublely-linked list
-    if(head == NULL) {
-        LinkedNodeClass* insertNode;
-        insertNode = new LinkedNodeClass(NULL, valToInsert, NULL);
-        head = insertNode;
-        tail = insertNode;
-    }
-    //with at least one node
-    else {
-        LinkedNodeClass* cur = head;
-        while((cur != NULL) && (cur->getValue() <= valToInsert)) {
-            cur = cur->getNext();
-        }
-        //add at head
-        if(cur == head) {
-            LinkedNodeClass* insertNode;
-            insertNode = new LinkedNodeClass(NULL, valToInsert, head);
-            insertNode->setBeforeAndAfterPointers();
-            head = insertNode;
-        }
-        //add at tail
-        else if (cur == NULL) {
-            LinkedNodeClass* insertNode;
-            insertNode = new LinkedNodeClass(tail, valToInsert, NULL);
-            insertNode->setBeforeAndAfterPointers();
-            tail = insertNode;
-        }
-        //add at middle
-        else {
-            LinkedNodeClass* insertNode;
-            insertNode = new LinkedNodeClass(cur->getPrev(), valToInsert, cur);
-            insertNode->setBeforeAndAfterPointers();
-        }
-    }
-}   //The value to insert into the list 
-
-//print the doublely linked-list forward
-void SortedListClass::printForward() const {
-    std::cout << "Forward List Contents Follow:" << std::endl;
-    LinkedNodeClass* printPtr = head;
-    while(printPtr != NULL){
-        std::cout << "  " << printPtr->getValue() << std::endl;
-        printPtr = printPtr->getNext();
-    }
-    std::cout << "End Of List Contents" << std::endl;
-}
-  
-//print the doublely linked-list backwards
-void SortedListClass::printBackward() const {
-    std::cout << "Backward List Contents Follow:" << std::endl;
-    LinkedNodeClass* printPtr = tail;
-    while(printPtr != NULL){
-        std::cout << "  " << printPtr->getValue() << std::endl;
-        printPtr = printPtr->getPrev();
-    }
-    std::cout << "End Of List Contents" << std::endl;
-}
-
-//remove the front node of the list and store the node value
-bool SortedListClass::removeFront(int &theVal) {
-    // the list is empty
-    if(head == NULL) {
-        return false;
-    }
-    //only one node to delete
-    else if(head == tail) {
-        theVal = head->getValue();
-        delete head;
-        head = tail = NULL;
-        return true;
-    }
-    else {
-        theVal = head->getValue();
-        head = head->getNext();
-        delete head->getPrev();
-        head->setPreviousPointerToNull();
-        return true;
-    }
-} 
-
-//remove the last node of the list and store the node value
-bool SortedListClass::removeLast(int &theVal) {
-    //the list is empty
-    if(head == NULL) {
-        return false;
-    }
-    //only one node to delete
-    else if(head == tail) {
-        this->removeFront(theVal);
-    }
-    else {
-        theVal = tail->getValue();
-        tail = tail->getPrev();
-        delete tail->getNext();
-        tail->setNextPointerToNull();
-    }
-    return true;
-}
-
-//Returns the number of nodes contained in the list. 
-int SortedListClass::getNumElems() const {
-    int count = 0;
-    LinkedNodeClass* countPtr = head; 
-    while(countPtr != NULL) {
-        count++;
-        countPtr = countPtr->getNext();
-    }
-    return count;
-}
-
-//get the element value when given the index
-bool SortedListClass::getElemAtIndex(const int index, int &outVal) const {
-    if(index < 0) {
-        return false;
-    }
-    //the index is out of bound
-    else if(index >= getNumElems()) {
-        return false;
-    }
-    else {
-        int countIndex = 0;
-        LinkedNodeClass* cur = head;
-        while(countIndex < index) {
-            countIndex++;
-            cur = cur->getNext();
-        }
-        outVal = cur->getValue();
-        return true;
-    }
+    // SortedListClass<char> testSort4;
+    // testSort4.insertValue('c');
+    // testSort4.insertValue('a');
+    // testSort4.insertValue('d');
+    // testSort4.insertValue('i');
+    // testSort4.insertValue('u');
+    // testSort4.insertValue('w');
+    // testSort4.insertValue('l');
+    // testSort4.printForward();
+    // testSort4.printBackward(); 
+    return 0;
 }

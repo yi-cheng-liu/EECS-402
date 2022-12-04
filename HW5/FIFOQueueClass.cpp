@@ -1,99 +1,59 @@
-#include <iostream>
 #include "FIFOQueueClass.h"
-#include "LinkedNodeClass.h"
 
-//constructor
-FIFOQueueClass::FIFOQueueClass() {
-    head = NULL;
-    tail = NULL;
-}
+int main() {
+    FIFOQueueClass<int> testQueue1;
+    testQueue1.enqueue(12);
+    testQueue1.enqueue(10);
+    testQueue1.enqueue(9);
+    testQueue1.enqueue(56);
+    testQueue1.enqueue(4);
+    testQueue1.enqueue(278);
+    testQueue1.enqueue(5);
+    testQueue1.print();
+    std::cout << testQueue1.getNumElems() << std::endl;
+    int out;
+    testQueue1.dequeue(out);
+    std::cout << out << std::endl;
+    testQueue1.print();
+    testQueue1.clear();
+    testQueue1.print();
+    
+    
+    FIFOQueueClass<double> testQueue2;
+    testQueue2.enqueue(12.4);
+    testQueue2.enqueue(4.6);
+    testQueue2.enqueue(9.3);
+    testQueue2.enqueue(56.3);
+    testQueue2.enqueue(4.67);
+    testQueue2.enqueue(278.66);
+    testQueue2.enqueue(5.5);
+    testQueue2.print();
+    std::cout << testQueue2.getNumElems() << std::endl;
+    double out2;
+    testQueue2.dequeue(out2);
+    std::cout << out2 << std::endl;
+    testQueue2.print();
+    testQueue2.clear();
+    testQueue2.print();
 
-//destructor
-FIFOQueueClass::~FIFOQueueClass() {
-    clear();
-}
+    FIFOQueueClass<bool> testQueue3;
+    testQueue3.enqueue(true);
+    testQueue3.enqueue(true);
+    testQueue3.enqueue(false);
+    testQueue3.enqueue(false);
+    testQueue3.enqueue(true);
+    testQueue3.enqueue(false);
+    testQueue3.enqueue(true);
+    testQueue3.print();
 
-//enqueue nodes to queue
-void FIFOQueueClass::enqueue(const int &newItem) {
-    // The queue is empty
-    if(head == NULL) {
-        LinkedNodeClass* headNode = new LinkedNodeClass(NULL, newItem, NULL);
-        head = headNode;
-        tail = headNode;
-    }
-    // Add new LinkedNode at the back of the LinkedList
-    else {
-        LinkedNodeClass* newNode = new LinkedNodeClass(tail, newItem, NULL);
-        newNode->setBeforeAndAfterPointers();
-        tail = newNode;
-    }
-} 
-
-//dequeue the first node of the queue and store the dequeue node value
-bool FIFOQueueClass::dequeue(int &outItem) {
-    //The queue is empty
-    if(head == NULL) {
-        return false;
-    }
-    //Only one node 
-    else if(head == tail) {
-        outItem = head->getValue();
-        delete head;
-        head = tail = NULL;
-        return true;
-    }
-    else {
-        LinkedNodeClass* nodeToDequeue = head;
-        outItem = head->getValue();
-        head = head->getNext();
-        delete nodeToDequeue;
-        head->setPreviousPointerToNull();
-        return true;
-    }
-}
-
-//print out the queue from first to last
-void FIFOQueueClass::print() const {
-    LinkedNodeClass *curPtr = head;
-    while(curPtr != NULL) {
-        std::cout << curPtr->getValue();
-        if(curPtr->getNext() != NULL){
-            std::cout << " ";
-        }
-        curPtr = curPtr->getNext();
-    }
-    std::cout << std::endl;
-}
-
-//get the number of elements
-int FIFOQueueClass::getNumElems() const {
-    LinkedNodeClass* countNode = head;
-    int count = 0;
-    if(head == NULL){
-        return 0;
-    }
-    else{
-        while(countNode != NULL){
-            count++;
-            countNode = countNode->getNext();
-        }
-    }
-    return count;
-}
-
-//clear the queue to prevent memory leak
-void FIFOQueueClass::clear() {
-    LinkedNodeClass* deleteNode = head;
-    //only one node to delete
-    if(head == tail) {
-        delete deleteNode;
-    }
-    else {
-        while(deleteNode->getNext() != NULL) {
-            deleteNode = deleteNode->getNext();
-            delete deleteNode->getPrev();
-        }
-        delete deleteNode;
-        head = tail = NULL;
-    }
+    FIFOQueueClass<char> testQueue4;
+    testQueue4.enqueue('c');
+    testQueue4.enqueue('a');
+    testQueue4.enqueue('d');
+    testQueue4.enqueue('i');
+    testQueue4.enqueue('u');
+    testQueue4.enqueue('w');
+    testQueue4.enqueue('l');
+    testQueue4.print();
+    return 0;
 }

@@ -1,36 +1,37 @@
 #ifndef _LINKED_NODE_CLASS_H_
 #define _LINKED_NODE_CLASS_H_
 
+template <class T>
 class LinkedNodeClass {  
 private:  
-    LinkedNodeClass *prevNode; //Will point to the node that comes before  
+    LinkedNodeClass<T> *prevNode; //Will point to the node that comes before  
                                //this node in the data structure. Will be  
                                //NULL if this is the first node.  
-    int nodeVal;               //The value contained within this node.  
-    LinkedNodeClass *nextNode; //Will point to the node that comes after  
+    T nodeVal;               //The value contained within this node.  
+    LinkedNodeClass<T> *nextNode; //Will point to the node that comes after  
                                //this node in the data structure. Will be  
                                //NULL if this is the last node.  
 public:  
     //The ONLY constructor for the linked node class - it takes in the  
     //newly created node's previous pointer, value, and next pointer,  
     //and assigns them.  
-    LinkedNodeClass(LinkedNodeClass *inPrev, const int &inVal, 
-                    LinkedNodeClass *inNext); 
+    LinkedNodeClass(LinkedNodeClass<T> *inPrev, const T &inVal, 
+                    LinkedNodeClass<T> *inNext); 
   
     //Returns the value stored within this node.  
-    int getValue() const;  
+    T getValue() const; 
   
     //Returns the address of the node that follows this node.  
-    LinkedNodeClass* getNext() const;  
+    LinkedNodeClass<T>* getNext() const; 
   
     //Returns the address of the node that comes before this node.  
-    LinkedNodeClass* getPrev() const;  
+    LinkedNodeClass<T>* getPrev() const; 
   
     //Sets the object’s next node pointer to NULL. 
-    void setNextPointerToNull();  
+    void setNextPointerToNull(); 
   
     //Sets the object's previous node pointer to NULL.  
-    void setPreviousPointerToNull();  
+    void setPreviousPointerToNull(); 
   
     //This function DOES NOT modify "this" node. Instead, it uses  
     //the pointers contained within this node to change the previous  
@@ -42,7 +43,8 @@ public:
     //"A" to be updated so its "nextNode" points to "this" node, and  
     //the node we're calling "B" is updated so its "prevNode" points  
     //to "this" node, but "this" node itself remains unchanged.  
-    void setBeforeAndAfterPointers();  
+    void setBeforeAndAfterPointers(); 
 }; 
 
+#include "LinkedNodeClass.inl"
 #endif

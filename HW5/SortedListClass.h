@@ -6,11 +6,12 @@
 //The sorted list class does not store any data directly.  Instead, 
 //it contains a collection of LinkedNodeClass objects, each of which 
 //contains one element. 
+template <class DAT>
 class SortedListClass { 
 private: 
-    LinkedNodeClass *head; //Points to the first node in a list, or NULL 
+    LinkedNodeClass<DAT> *head; //Points to the first node in a list, or NULL 
                            //if list is empty. 
-    LinkedNodeClass *tail; //Points to the last node in a list, or NULL 
+    LinkedNodeClass<DAT> *tail; //Points to the last node in a list, or NULL 
                            //if list is empty. 
 public: 
     //Default Constructor.  Will properly initialize a list to 
@@ -19,7 +20,7 @@ public:
 
     //Copy constructor.  Will make a complete (deep) copy of the list, such 
     //that one can be changed without affecting the other. 
-    SortedListClass(const SortedListClass &rhs); 
+    SortedListClass(const SortedListClass<DAT> &rhs); 
 
     //Destructor.  Responsible for making sure any dynamic memory 
     //associated with an object is freed up when the object is 
@@ -37,7 +38,7 @@ public:
     //being inserted is found to be "equal to" one or more node values 
     //already in the list, the newly inserted node will be placed AFTER 
     //the previously inserted nodes. 
-    void insertValue(const int &valToInsert);
+    void insertValue(const DAT &valToInsert);
 
     //Prints the contents of the list from head to tail to the screen. 
     //Begins with a line reading "Forward List Contents Follow:", then 
@@ -58,7 +59,7 @@ public:
     //If the list was not empty and the first item was successfully 
     //removed, true is returned, and the reference parameter will 
     //be set to the item that was removed. 
-    bool removeFront(int &theVal);
+    bool removeFront(DAT &theVal);
 
     //Removes the last item from the list and returns the value that 
     //was contained in it via the reference parameter.  If the list 
@@ -67,17 +68,18 @@ public:
     //If the list was not empty and the last item was successfully 
     //removed, true is returned, and the reference parameter will 
     //be set to the item that was removed.  
-    bool removeLast(int &theVal); 
+    bool removeLast(DAT &theVal);
 
     //Returns the number of nodes contained in the list. 
-    int getNumElems() const; 
+    int getNumElems() const;
 
     //Provides the value stored in the node at index provided in the 
     //0-based "index" parameter.  If the index is out of range, then outVal 
     //remains unchanged and false is returned.  Otherwise, the function 
     //returns true, and the reference parameter outVal will contain 
     //a copy of the value at that location. 
-    bool getElemAtIndex(const int index, int &outVal) const; 
+    bool getElemAtIndex(const int index, DAT &outVal) const;
 };
 
+#include "SortedListClass.inl"
 #endif
