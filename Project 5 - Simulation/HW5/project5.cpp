@@ -4,7 +4,7 @@ using namespace std;
 
 #include "IntersectionSimulationClass.h"
 
-//Programmer: Yi-Cheng, Liu
+//Programmer: Andrew Morgan
 //Date: December 2022
 //Purpose: High-level main function to setup a simulation of traffic
 //         flow through an intersection.  This is being written to
@@ -25,12 +25,14 @@ int main(int argc, char *argv[]) {
 
     if (success) {
         //Read input parameters and print to screen for reference..
-        cout << "Reading parameters from file: " << specifiedParamFname << endl;
+        cout << "Reading parameters from file: " << specifiedParamFname 
+             << endl;
         simObj.readParametersFromFile(specifiedParamFname);
         simObj.printParameters();
 
         if (!simObj.getIsSetupProperly()) {
-            cout << "Cannot run simulation as it is not setup properly!" << endl;
+            cout << "Cannot run simulation as it is not setup properly!" 
+                 << endl;
             success = false;
         }
     }

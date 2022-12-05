@@ -51,6 +51,17 @@ public:
     //here!  An event "A" is "less than" an event "B" if
     //"A"'s time is less than "B"'s time.
 
+    //MY CODE: compare the events accoring to timeOccurs
+    bool operator<=(const EventClass &rhs) {
+        return timeOccurs <= rhs.timeOccurs;
+    }
+
+    //assign one event to another
+    void operator=(const EventClass &rhs) {
+        timeOccurs = rhs.timeOccurs;
+        typeId = rhs.typeId;
+    }
+
     //Since this insertion operator really ought to be a method, but 
     //can't be due to the way C++ manages operator overloading, we
     //make it an "honorary method" by declaring it as a friend.

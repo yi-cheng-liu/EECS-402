@@ -6,7 +6,6 @@
 //      prepend all items from the std namespace with "std::" here
 #include "SortedListClass.h"
 #include "EventClass.h"
-
 #include "FIFOQueueClass.h"
 #include "CarClass.h"
 
@@ -68,13 +67,13 @@ private:
     //Simulation execution attributes
     int currentTime; //The current time for the simulation
     int currentLight; //The state of the traffic light at the current sim time
-    SortedListClass< EventClass > eventList; //The time-sorted list of events
+    SortedListClass<EventClass> eventList; //The time-sorted list of events
                                              //currently scheduled to occur
-    FIFOQueueClass< CarClass > eastQueue; //Queue of cars waiting to advance
+    FIFOQueueClass<CarClass> eastQueue; //Queue of cars waiting to advance
                                           //through intersection east-bound
-    FIFOQueueClass< CarClass > westQueue; //West-bound queue of cars
-    FIFOQueueClass< CarClass > northQueue; //North-bound queue of cars
-    FIFOQueueClass< CarClass > southQueue; //South-bound queue of cars
+    FIFOQueueClass<CarClass> westQueue; //West-bound queue of cars
+    FIFOQueueClass<CarClass> northQueue; //North-bound queue of cars
+    FIFOQueueClass<CarClass> southQueue; //South-bound queue of cars
 
     //Statistics-Related attributes
     int maxEastQueueLength;

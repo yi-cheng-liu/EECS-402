@@ -2,8 +2,10 @@
 using namespace std;
 
 #include "EventClass.h"
+#include "SortedListClass.h"
 #include "constants.h"
 
+// standard way to print out
 ostream& operator<<(ostream& outStream, const EventClass &eventToPrint) {
     outStream << "Event Type: ";
     if (eventToPrint.typeId == EVENT_ARRIVE_EAST) {
@@ -35,4 +37,4 @@ ostream& operator<<(ostream& outStream, const EventClass &eventToPrint) {
     }
     outStream << " Time: " << eventToPrint.timeOccurs;
     return outStream;
-}  
+}

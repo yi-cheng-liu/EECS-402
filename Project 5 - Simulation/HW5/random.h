@@ -4,7 +4,8 @@
 #include <cstdlib>
 using namespace std; 
 
-//Programmer: Yi-Cheng, Liu
+//Programmer: Andrew Morgan
+//Date: November 2020
 //Purpose: Provide some simple functionality to generate
 //pseudo-random numbers for multiple distribution types.
 

@@ -29,4 +29,15 @@ const int LIGHT_YELLOW_EW = 2;
 const int LIGHT_GREEN_NS = 3;
 const int LIGHT_YELLOW_NS = 4;
 
+//Stop At Yellow Light
+const bool STOP_AT_YELLOW = true;
+const bool NOT_STOP_AT_YELLOW = false;
+
+//Uniform random number
+const int INCLUSIVE_MIN = 1;
+const int INCLUSIVE_MAX = 100;
+
+//check whether the queue is empty
+const int EMPTY_QUEUE = 0;
+
 #endif //_CONSTANTS_H_
