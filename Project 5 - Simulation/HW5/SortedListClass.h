@@ -3,9 +3,11 @@
 
 #include "LinkedNodeClass.h"
 
-//The sorted list class does not store any data directly.  Instead, 
-//it contains a collection of LinkedNodeClass objects, each of which 
-//contains one element. 
+//Programmer: Yi-Cheng, Liu
+//Date: December 2022
+//Purpose: The sorted list class does not store any data directly.  Instead, 
+//         it contains a collection of LinkedNodeClass objects, each of which 
+//         contains one element wwith sorted order. 
 template <class DAT>
 class SortedListClass { 
 private: 

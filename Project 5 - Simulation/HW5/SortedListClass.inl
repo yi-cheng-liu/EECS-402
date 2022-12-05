@@ -1,6 +1,10 @@
 #include <iostream>
 #include "SortedListClass.h"
 
+//Programmer: Yi-Cheng, Liu
+//Date: December 2022
+//Purpose: templated definition of the SortedListClass.h
+
 //Constructor
 template <class DAT>
 SortedListClass<DAT>::SortedListClass() {

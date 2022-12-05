@@ -4,7 +4,7 @@
 #include <iostream>
 #include "constants.h" 
 
-//Programmer: Yi-Cheng, Liu 
+//Programmer: Andrew Morgan
 //Date: November 2020
 //Purpose: A simple class to represent event objects that can be used in
 //         an event-driven simulation.  The overloaded insertion operator

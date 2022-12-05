@@ -3,6 +3,12 @@
 
 #include "LinkedNodeClass.h"
 
+//Programmer: Yi-Cheng, Liu
+//Date: December 2022
+//Purpose: The FIFOQueue class does not store any data directly.  Instead, 
+//         it contains a collection of LinkedNodeClass objects, each of which 
+//         contains one element with order of a queue.
+
 template <class DT>
 class FIFOQueueClass {
 private: 

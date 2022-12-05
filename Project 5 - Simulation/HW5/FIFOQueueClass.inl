@@ -2,6 +2,10 @@
 #include "FIFOQueueClass.h"
 #include "LinkedNodeClass.h"
 
+//Programmer: Yi-Cheng, Liu
+//Date: December 2022
+//Purpose: templated definition of the FIFOQueueClass.h
+
 //constructor
 template <class DT>
 FIFOQueueClass<DT>::FIFOQueueClass() {

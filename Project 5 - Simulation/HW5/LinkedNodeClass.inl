@@ -1,6 +1,10 @@
 #include <iostream>
 #include "LinkedNodeClass.h"
 
+//Programmer: Yi-Cheng, Liu
+//Date: December 2022
+//Purpose: templated definition of the LinkedNodeClass.h
+
 //Constructor
 template <class T>
 LinkedNodeClass<T>::LinkedNodeClass(LinkedNodeClass<T> *inPrev, const T &inVal, 

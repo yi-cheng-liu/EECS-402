@@ -1,6 +1,10 @@
 #ifndef _LINKED_NODE_CLASS_H_
 #define _LINKED_NODE_CLASS_H_
 
+//Programmer: Yi-Cheng, Liu
+//Date: December 2022
+//Purpose: the list node will contain specified datatype
+
 template <class T>
 class LinkedNodeClass {  
 private:  
