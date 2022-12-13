@@ -9,9 +9,14 @@ Project 2 - Pixel and image representation
 project 3 - Image modification (bounding boxes, pattern, and images) \
 The project requires a lot of bound checking. 
 
+project 4 - Linked list (Sorted linked list, implement stack and queue with linked list)
+
+project 5 - Event driven simulation
+
 ## Project 1 - Accure Interest calculator
 ## Project 2 - Pixel and image representation
 ## project 3 - Image modification (bounding boxes, pattern, and images)
+
 ### :star:Error situation
 1. Unable to read ppm file
     - ppm is not P3
@@ -54,3 +59,5 @@ This is the test file to check all invalid input and the boundaries for the imag
     cat 4_formal_test.txt | ./project3.exe
 
   
+## project 4 - Linked list (Sorted linked list, implement stack and queue with linked list)
+## project 5 - Event driven simulation
