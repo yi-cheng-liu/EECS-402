@@ -6,18 +6,42 @@ Project 1 - Accure Interest calculator
 
 Project 2 - Pixel and image representation
 
-project 3 - Image modification (bounding boxes, pattern, and images) \
-The project requires a lot of bound checking. 
+project 3 - Image modification (bounding boxes, pattern, and images)
 
 project 4 - Linked list (Sorted linked list, implement stack and queue with linked list)
 
 project 5 - Event driven simulation
 
 ## Project 1 - Accure Interest calculator
-## Project 2 - Pixel and image representation
-## project 3 - Image modification (bounding boxes, pattern, and images)
+This project involves implementing a program to calculate interest for an investment account with monthly accruals. The balance of the account cannot be changed through deposits or withdrawals. Three different interest rates are applied depending on the account balance: a minimum rate, a standard rate, and a maximum rate.
 
-### :star:Error situation
+The key points of the project are:
+* Interest is accrued monthly, and the length of the month does not affect the interest amount.
+* Only one interest rate is used during a month, based on the balance at the start of the month.
+* The interest rates are determined by the account balance, with higher balances receiving a higher rate. The minimum rate is applied for balances under $1000, the standard rate for balances between $1000 and $15000, and the maximum rate for balances over $15000.
+
+## Project 2 - Pixel and image representation
+This project involves implementing three C++ classes to represent colors, images, and locations within an image. Colors are described using RGB values, and images are represented as two-dimensional arrays of pixel colors. Locations within an image are identified by row and column indices.
+
+The key points of the project are:
+* Colors are represented using RGB values, with a maximum allowed value of 1000 and a minimum allowed value of 0.
+* Images are represented as two-dimensional arrays of pixel colors, with rows and columns as the two dimensions.
+* Locations within an image are identified by their row and column indices.
+
+## project 3 - Image modification (bounding boxes, pattern, and images)
+In this project, you will be working with a simple image format called PPM (Portable Pixel Map). PPM files are text files that contain information about the color values of each pixel in an image. The first line of the file contains the file type (P3 for PPM), followed by the image width and height, and the maximum color value (255). The rest of the file contains a list of the red, green, and blue color values for each pixel, one pixel per line.
+
+Your task is to write a program that can read in a PPM file, modify the image in a few specific ways, and then write the modified image back out to a new PPM file. Specifically, your program should be able to:
+
+* Read in a PPM file and create a Color Image object to represent the image.
+* Modify the image by either:
+  * Drawing a rectangle with a specified color at a specified location and size
+  * Replacing all pixels of a specified color in the image with a specified pattern
+* Write the modified image out to a new PPM file.
+
+Additional classes to represent the rectangle and the pattern was created. I also use dynamic allocation of arrays to store the pixel values of the image and the pattern. Additionally, any potential errors that may occur during file input/output have to be handled.
+
+### :star:Error Handling
 1. Unable to read ppm file
     - ppm is not P3
     - Height and width doesn't match the pixels
@@ -60,4 +84,8 @@ This is the test file to check all invalid input and the boundaries for the imag
 
   
 ## project 4 - Linked list (Sorted linked list, implement stack and queue with linked list)
+This project involves implementing a doubly-linked list data structure that is always maintained in sorted order, along with a node class that can be used in other data structures. The node class should not be aware of the list and can be used independently.
+
 ## project 5 - Event driven simulation
+The goal of this project is to implement an event-driven simulation of traffic flow through a 4-way intersection that is managed by a traffic light. The simulation should include cars arriving at the intersection traveling in all four directions, as well as the light changing state throughout the simulation. The project will be split into two phases. In the first phase, the SortedListClass and the FIFOQueueClass developed in project 4 will be updated to be templated classes. In the second phase, an event-driven simulation of cars traveling through an intersection will be developed using the templated data structures. The simulation will read in 15 control parameters from a text file and output some basic statistics about the traffic flow.
+
